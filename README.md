@@ -1,5 +1,7 @@
 # Microservice Auth Demo
 
+[![CI](https://github.com/matthew-vance/microservice-auth-demo/actions/workflows/main.yml/badge.svg)](https://github.com/matthew-vance/microservice-auth-demo/actions/workflows/main.yml)
+
 ### Install
 
 ```bash
