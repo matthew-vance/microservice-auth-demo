@@ -7,13 +7,13 @@ import jwt from "jsonwebtoken";
 import routes from "./routes";
 
 const PORT = 3001;
-const TOKEN_SECRET = "secret";
+const TOKEN_SECRET = process.env.TOKEN_SECRET!;
 
 const app = express();
 
 app.use(cors());
 app.use(helmet());
-app.use(morgan("combined"));
+app.use(morgan("tiny", { immediate: true }));
 
 const checkAuth =
   (auth: boolean) => (req: Request, res: Response, next: NextFunction) => {

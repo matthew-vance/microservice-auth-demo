@@ -1,25 +1,30 @@
 import { Box, Button, Center, Flex, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import LoginForm from "./LoginForm";
-import useAuth, { AuthValue } from "./useAuth";
-
-const fetchMessage = async (auth: AuthValue) => {
-  const response = await fetch("http://localhost:3001/message", {
-    headers: { Authorization: `Bearer ${auth.token}` },
-  });
-
-  const data = await response.json();
-  return data.message;
-};
+import useAuth from "./useAuth";
 
 const App = () => {
   const { auth, setToken: setAuth } = useAuth();
   const [message, setMessage] = useState();
 
   useEffect(() => {
-    if (auth) {
-      fetchMessage(auth).then(setMessage);
-    }
+    const fetchMessage = async () => {
+      if (auth) {
+        try {
+          const response = await fetch("http://localhost:3001/message", {
+            headers: { Authorization: `Bearer ${auth.token}` },
+          });
+
+          const data = await response.json();
+          setMessage(data.message);
+        } catch {
+          setMessage(undefined);
+          setAuth();
+        }
+      }
+    };
+
+    fetchMessage();
   }, [auth]);
 
   const handleSuccess = (token: string) => {

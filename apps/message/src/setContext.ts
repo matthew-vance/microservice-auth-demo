@@ -12,7 +12,7 @@ declare global {
   }
 }
 
-const TOKEN_SECRET = "secret";
+const TOKEN_SECRET = process.env.TOKEN_SECRET!;
 
 const setContext = (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;

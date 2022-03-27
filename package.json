@@ -1,0 +1,30 @@
+{
+  "name": "microservice-auth-demo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "clean": "git clean -Xfd",
+    "dev": "TOKEN_SECRET=secret turbo run dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthew-vance/microservice-auth-demo.git"
+  },
+  "keywords": [],
+  "author": "Matthew Vance",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matthew-vance/microservice-auth-demo/issues"
+  },
+  "homepage": "https://github.com/matthew-vance/microservice-auth-demo#readme",
+  "devDependencies": {
+    "turbo": "^1.1.10"
+  }
+}

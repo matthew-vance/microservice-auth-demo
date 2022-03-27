@@ -5,12 +5,12 @@ import jwt from "jsonwebtoken";
 import data from "./data";
 
 const PORT = 3002;
-const TOKEN_SECRET = "secret";
+const TOKEN_SECRET = process.env.TOKEN_SECRET!;
 
 const app = express();
 
 app.use(express.json());
-app.use(morgan("combined"));
+app.use(morgan("tiny"));
 
 interface AuthBody {
   email: string;

@@ -16,6 +16,7 @@ const LoginForm = ({ onSuccess }: LoginFormProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (
     event
   ) => {
@@ -32,10 +33,11 @@ const LoginForm = ({ onSuccess }: LoginFormProps) => {
 
       const { token } = await response.json();
 
+      setIsLoading(false);
       onSuccess(token);
-    } catch (error) {}
-
-    setIsLoading(false);
+    } catch {
+      setIsLoading(false);
+    }
   };
   return (
     <form onSubmit={handleSubmit}>
